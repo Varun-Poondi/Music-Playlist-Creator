@@ -4,7 +4,7 @@ import pathlib
 from pytube import YouTube
 from tkmacosx import Button
 import tkinter.font as font
-
+import Tapes as tp
 SOUND = 'sample_click.m4a'
 
 
@@ -37,7 +37,7 @@ class YoutubeDownloader:
         # Create Download Button
         self.download_button = Button(root, text='Download', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
                                       activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D',
-                                      command=lambda: self.__get_link(root))
+                                      command=self.__get_link)
         self.download_button.place(y=70, relx=0.79, rely=0.5, anchor=CENTER)
 
         return
@@ -55,7 +55,7 @@ class YoutubeDownloader:
     # Test link: https://www.youtube.com/watch?v=EddzRp8E2Dc
     # Test path: /Users/varunpoondi/Desktop/mp4-Music
 
-    def __get_link(self, root):
+    def __get_link(self):
         directory = pathlib.Path(self.path_entry.get())
         hold = self.path_entry.get()
         if hold == '':
@@ -75,4 +75,6 @@ class YoutubeDownloader:
             path = self.path_entry.get()
             name = self.name_entry.get()
             ext = self.ext_entry.get()
-            self.__downloader(link, path, name, ext)
+            # self.__downloader(link, path, name, ext)
+            tp.Tape(link, path)
+
