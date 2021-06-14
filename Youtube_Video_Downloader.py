@@ -56,11 +56,13 @@ class YoutubeDownloader:
     # Test path: /Users/varunpoondi/Desktop/mp4-Music
 
     def __get_link(self, root):
-
         directory = pathlib.Path(self.path_entry.get())
-
+        hold = self.path_entry.get()
+        if hold == '':
+            directory = ''
+        print('dir', directory)
         flag = True
-        if directory.exists():
+        if directory != '' and directory.exists():
             print('exits')
         else:
             self.path_entry.delete(0, tk.END)
