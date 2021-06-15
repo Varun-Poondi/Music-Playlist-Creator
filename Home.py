@@ -1,6 +1,7 @@
 from tkmacosx import Button
 import Youtube_Video_Downloader as YT
 import PlayLists as PL
+import CreatePlayLists as CP
 import tkinter.font as font
 import tkinter as tk
 
@@ -60,7 +61,7 @@ class ThirdPage(tk.Frame):
         # b.place(x=650, y=450)
 
         create_home_button(self, controller)
-        PL.PlayLists(self)
+        PL.PlayListFrame(self)
 
 
 class FourthPage(tk.Frame):
@@ -69,7 +70,7 @@ class FourthPage(tk.Frame):
         self.configure(bg='#EBDEF0')
 
         create_home_button(self, controller)
-
+        CP.CreatePlayList(self)
 
 class Application(tk.Tk):
     def __init__(self, *args, **kwargs):
