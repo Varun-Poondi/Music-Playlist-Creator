@@ -1,18 +1,30 @@
 from tkinter import *
-from tkmacosx import Button
 import tkinter.font as font
 
+class PlayList:
+    def __init__(self, playlist_name, playlist):
+        self.playlist = playlist
+        print(playlist_name)
+        for tabs in self.playlist:
+            print(tabs.title)
+        return
 
-class PlayLists(Frame):
-    def __init__(self, parent):
-        Frame.__init__(self, parent)
-        buttonFont = font.Font(family='Helvetica', size=16)
-        self.my_playlists = Label(self, text='My Playlists', font=buttonFont, bg='#EBDEF0', bd=3)
-        self.my_playlists.place(relx=0.2, rely=0.1, anchor=CENTER)
 
-        # Travel Button
-        self.cp_button = Button(self, text='Create PlayList', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
-                                activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D')
-        self.cp_button.place(relx=0.75, rely=0.965, anchor=SW)
+class PlayListFrame(Frame, PlayList):
+    def __init__(self, root):
+        Frame.__init__(self, root)
+
+        home_label = Label(root, text='My PlayLists', font=font.Font(family='Helvetica', size=20), bg='#EBDEF0', bd=3)
+        home_label.place(relx=0.5, rely=0.1, anchor=CENTER)
+
+        self.scrollbar = Scrollbar(root)
+        self.scrollbar.place(relx=0.1, rely=0.35, anchor=CENTER)
+
+        self.my_list = Listbox(root, yscrollcommand=self.scrollbar.set)
+        for line in range(100):
+            self.my_list.insert(END, "This is line number " + str(line))
+
+        self.my_list.place(relx=0.15, rely=0.20)
+        self.scrollbar.config(command=self.my_list.yview)
 
         return
