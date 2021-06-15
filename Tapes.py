@@ -15,4 +15,3 @@ class Tape:
         self.duration_format = __seconds_to_minutes(self.video.length)
         self.publish_date = self.video.publish_date
         self.video_path = path
-
