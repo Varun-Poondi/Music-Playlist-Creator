@@ -5,10 +5,13 @@ from pytube import YouTube
 from tkmacosx import Button
 import tkinter.font as font
 import Tapes as tp
+import Library as lb
+
 SOUND = 'sample_click.m4a'
 
 
 class YoutubeDownloader:
+
     def __init__(self, root):
         # Create Labels
         buttonFont = font.Font(family='Helvetica', size=16)
@@ -40,6 +43,7 @@ class YoutubeDownloader:
                                       command=self.__get_link)
         self.download_button.place(y=70, relx=0.79, rely=0.5, anchor=CENTER)
 
+        self.library_entry = lb.Library()
         return
 
     def __downloader(self, link, save_path='', save_name='', extension='mp4'):
@@ -69,12 +73,11 @@ class YoutubeDownloader:
             self.path_entry.insert(0, 'Invalid File Path! Please try again.')
             flag = False
         print('pass')
-
         if flag:
             link = self.link_entry.get()
             path = self.path_entry.get()
             name = self.name_entry.get()
             ext = self.ext_entry.get()
             # self.__downloader(link, path, name, ext)
-            tp.Tape(link, path)
-
+            tape = tp.Tape(link, path)
+            self.library_entry.add_tape(tape)
