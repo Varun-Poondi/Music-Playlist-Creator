@@ -5,7 +5,7 @@
 * Create musical libraries to store songs and playlists
 ## Unique Features: 
 * Expandable song library
-* * Able to add songs that are currently stored in library or found in local machine
+  * Able to add songs that are currently stored in library or found in local machine
 * Built in video and audio player
 ## Main Python Libraries Used
 * tkinter
