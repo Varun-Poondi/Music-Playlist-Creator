@@ -9,4 +9,3 @@
 ## Main Python Libraries Used
 * tkinter
 * tkmacos
-* Sql Database
