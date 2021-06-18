@@ -1,4 +1,4 @@
-# Music-Playlist-Creator
+# Music-Playlist-Creator🎷🎸🎶🎵
 ## A simple playlist creator 
 ## This project aims to give users the ability to 
 * Create video or music playlists
