@@ -1,17 +1,16 @@
 from tkinter import *
-from tkinter import font
-import Library as lib
 import ProjTools as pt
-import numpy as np
+
 
 global_playlist = []
 
 class PlayList:
-    def __init__(self, playlist_name, playlist_array):
-        print(playlist_name)
-
-        for i in range(len(playlist_array)):
-            print(str(i+1) + ':', playlist_array[i].__str__())
+    def __init__(self, name, array):
+        print(name)
+        self.playlist_name = name
+        self.playlist_array = array
+        for i in range(len(self.playlist_array)):
+            print(str(i+1) + ':', self.playlist_array[i].__str__())
         return
 
 
