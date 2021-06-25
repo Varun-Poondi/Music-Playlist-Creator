@@ -11,5 +11,6 @@
 * tkinter
 * tkmacos
 
-![GitHub Logo](/images/logo.png)
+![GitHub Logo](Screen Shot 2021-06-25 at 11.42.05 AM.png)
+
 Format: ![Alt Text](url)
