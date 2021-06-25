@@ -1,3 +1,4 @@
+import ctypes.wintypes
 import pathlib
 from tkinter import *
 from tkinter import font
@@ -16,6 +17,7 @@ def create_home_button(self, controller, frame):
     home.place(x=10, y=-10, relx=0.0, rely=1.0, anchor=SW)
 
 
+
 def create_Frame_label(root, text):
     home_label = Label(root, text=text, font=font.Font(family='Helvetica', size=20), bg='#EBDEF0', bd=3)
     home_label.place(relx=0.5, rely=0.1, anchor=CENTER)
@@ -32,5 +34,7 @@ def file_checker(entry):
     else:
         return False
 
-def remove(string):
-    return string.replace(" ", "")
+
+
+def format_vars(string):
+    return str(string).strip()
