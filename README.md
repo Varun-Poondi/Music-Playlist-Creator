@@ -10,3 +10,6 @@
 ## Main Python Libraries Used
 * tkinter
 * tkmacos
+
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
