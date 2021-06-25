@@ -1,5 +1,5 @@
 from tkinter import *
-from tkmacosx import Button
+from tkmacosx import Button, CircleButton
 from PlayLists import PlayList
 import tkinter.font as font
 import Library as lib
@@ -39,10 +39,16 @@ class CreatePlayList(Frame):
                                  activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
                                  command=self.__get_add)
         self.add_button.place(relx=0.88, rely=0.80, anchor=SE)
-        self.add_button = Button(root, text='Submit', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
-                                 activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
-                                 command=self.__get_create)
-        self.add_button.place(relx=0.88, rely=0.965, anchor=SE)
+        self.submit_button = Button(root, text='Submit', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                                    activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
+                                    command=self.__get_create)
+        self.submit_button.place(relx=0.88, rely=0.965, anchor=SE)
+
+        self.clear_button = CircleButton(root, text='CE', font=font.Font(family='Helvetica', size=12), bg='#A3E4D7',
+                                         fg='#5F4B8B', borderless=1,
+                                         activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', radius=20,
+                                         command=self.__get_clear)
+        self.clear_button.place(relx=0.98, rely=0.40, anchor=SE)
 
     # /Users/varunpoondi/Desktop/mp4-Music/Playboi Carti- 9 AM in Calabasas remix(prod by Adrian).mp4
     def __get_add(self):
@@ -68,6 +74,10 @@ class CreatePlayList(Frame):
                 parse = song_title.split('-')
                 author = parse[0]
                 song = parse[-1]
+                song = str(song)[:-4]
+
+                author = pt.format_vars(author)
+                song = pt.format_vars(song)
 
                 tape = tp.Tape(path, author, song)
                 lib.add_tape(tape)
@@ -80,3 +90,7 @@ class CreatePlayList(Frame):
         my_array = np.array(self.current_playlist)
         PlayList(self.current_playlist_name, my_array)
         self.name_entry.delete(0, END)
+
+    def __get_clear(self):
+        self.find_song_path_entry.delete(0, END)
+        self.search_entry.delete(0, END)
