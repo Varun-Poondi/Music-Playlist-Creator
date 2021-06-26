@@ -7,7 +7,7 @@
 * Expandable song and playlist library
   * Able to add songs that are currently stored in library or found in local machine
 * Song and playlist search engines using sqlite3 database
-* Songs and playlists can be deleted from librarys and/or local machine
+* Songs and playlists can be deleted from libraries and/or local machine
 ## Main Python Libraries Used
 * tkinter
 * tkmacos
