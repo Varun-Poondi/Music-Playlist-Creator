@@ -12,7 +12,9 @@
 * tkinter
 * tkmacos
 * sqlite3
-
+## Notice:
+* Currently only compatible with Darwin Unix.
+* Developed on MacOS Big Sur Version: 11.4
 ## Sample Images
 ![](images/main_menu.png)
 ![](images/playlist_creator.png)
