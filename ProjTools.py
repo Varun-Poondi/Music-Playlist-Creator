@@ -38,3 +38,10 @@ def file_checker(entry):
 
 def format_vars(string):
     return str(string).strip()
+
+
+def listToString(s):  # GeeksForGeeks
+    str1 = ""
+    for ele in s:
+        str1 += ele
+    return str1
