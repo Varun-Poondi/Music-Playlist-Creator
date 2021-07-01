@@ -1,9 +1,11 @@
 from tkinter import *
 from tkmacosx import Button, CircleButton
-from PlayLists import PlayList
 import tkinter.font as font
-import Library as lib
+import datetime as dt
+import SongDB as s_db
+import PlaylistDB as p_db
 import Tapes as tp
+import Playlists as pl
 import ProjTools as pt
 import numpy as np
 
@@ -54,7 +56,7 @@ class CreatePlayList(Frame):
     def __get_add(self):
         self.current_playlist_name = self.name_entry.get()
         if self.search_entry.get() != '':
-            search_result = lib.get_music_by_name(self.search_entry.get())
+            search_result = s_db.get_music_by_name(self.search_entry.get())
             if search_result is None:
                 self.search_entry.delete(0, END)
                 self.search_entry.insert(0, 'Song Was not found in you library.')
@@ -80,15 +82,20 @@ class CreatePlayList(Frame):
                 song = pt.format_vars(song)
 
                 tape = tp.Tape(path, author, song)
-                lib.add_tape(tape)
+                s_db.add_tape(tape)
                 self.current_playlist.append(tape)
                 print('song added')
-                lib.get_lib_info()
+                s_db.get_lib_info()
 
     def __get_create(self):
         self.search_entry.delete(0, END)
         my_array = np.array(self.current_playlist)
-        PlayList(self.current_playlist_name, my_array)
+        date = dt.date.today()
+        current_date = str(date.month) + "-" + str(date.day) + "-" + str(date.year)
+        playlist = pl.Playlist(my_array, self.current_playlist_name, current_date)
+        # p_db.add_playlist(playlist)
+
+        print(playlist.__str__())
         self.name_entry.delete(0, END)
 
     def __get_clear(self):
