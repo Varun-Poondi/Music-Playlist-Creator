@@ -61,8 +61,9 @@ class CreatePlayList(Frame):
                 self.search_entry.delete(0, END)
                 self.search_entry.insert(0, 'Song Was not found in you library.')
             else:
+                music_path = s_db.get_path_by_title(search_result)
                 print("Song was found in your library")
-                self.current_playlist.append(search_result)
+                self.current_playlist.append(music_path)
                 self.search_entry.delete(0, END)
         else:
             flag = pt.file_checker(self.find_song_path_entry)
@@ -83,7 +84,7 @@ class CreatePlayList(Frame):
 
                 tape = tp.Tape(path, author, song)
                 s_db.add_tape(tape)
-                self.current_playlist.append(tape)
+                self.current_playlist.append(tape.video_path)
                 print('song added')
                 s_db.get_lib_info()
 
@@ -93,7 +94,7 @@ class CreatePlayList(Frame):
         date = dt.date.today()
         current_date = str(date.month) + "-" + str(date.day) + "-" + str(date.year)
         playlist = pl.Playlist(my_array, self.current_playlist_name, current_date)
-        # p_db.add_playlist(playlist)
+        p_db.add_playlist(playlist)
 
         print(playlist.__str__())
         self.name_entry.delete(0, END)
