@@ -1,7 +1,6 @@
 .idea/
 venv/
 __pycache__/
-test.py
-test2.py
-test.txt
+testFiles/
 music_library.db
+playlist_library.db
