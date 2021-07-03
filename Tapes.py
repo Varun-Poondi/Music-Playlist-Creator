@@ -8,12 +8,6 @@ class Tape:
         self.video_name = name
 
 
-    def __str__(self):
-        return 'Video Info: ' + \
-               '\nAuthor: ' + self.video_author + \
-               '\nName: ' + self.video_name + \
-               '\nPath: ' + self.video_path + '\n'
-
     def change_name(self, name):
         self.video_name = name
         self.video_title = self.video_author + "-" + self.video_name

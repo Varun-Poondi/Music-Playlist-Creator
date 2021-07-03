@@ -6,7 +6,6 @@ from tkinter import font
 from tkmacosx import Button
 
 
-
 def create_home_button(self, controller, frame):
     buttonFont = font.Font(family='Helvetica', size=16)
 
@@ -17,11 +16,9 @@ def create_home_button(self, controller, frame):
     home.place(x=10, y=-10, relx=0.0, rely=1.0, anchor=SW)
 
 
-
 def create_Frame_label(root, text):
     home_label = Label(root, text=text, font=font.Font(family='Helvetica', size=20), bg='#EBDEF0', bd=3)
     home_label.place(relx=0.5, rely=0.1, anchor=CENTER)
-
 
 
 def file_checker(entry):
@@ -35,7 +32,6 @@ def file_checker(entry):
         return False
 
 
-
 def format_vars(string):
     return str(string).strip()
 
@@ -45,3 +41,12 @@ def listToString(s):  # GeeksForGeeks
     for ele in s:
         str1 += ele
     return str1
+
+
+def db_validator(result, row, col):
+    if len(result) == 0:
+        result = None
+    else:
+        result = result[row][col]
+
+    return result
