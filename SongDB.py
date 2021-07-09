@@ -26,10 +26,10 @@ def get_music_by_author(author_name):
     return pt.db_validator(c.fetchall(), 1, 0)
 
 
-
 def get_music_by_name(name):
     c.execute("SELECT * FROM music WHERE name=?", (name,))
     return pt.db_validator(c.fetchall(), 0, 1)
+
 
 def get_path_by_title(title):
     c.execute("SELECT path FROM music WHERE title=?", (title,))
