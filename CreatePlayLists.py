@@ -1,4 +1,6 @@
+import os
 from tkinter import *
+from tkinter import filedialog
 from tkmacosx import Button, CircleButton
 import tkinter.font as font
 import datetime as dt
@@ -52,7 +54,19 @@ class CreatePlayList(Frame):
                                          command=self.__get_clear)
         self.clear_button.place(relx=0.98, rely=0.40, anchor=SE)
 
+        load_button = Button(root, text='Search Path', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                             activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
+                             command=self.__get_load)
+
+        load_button.place(relx=0.016, rely=0.74)
+
     # /Users/varunpoondi/Desktop/mp4-Music/Playboi Carti- 9 AM in Calabasas remix(prod by Adrian).mp4
+
+    def __get_load(self):
+        self.find_song_path_entry.delete(0, END)
+        self.music_file = filedialog.askopenfilename()
+        self.find_song_path_entry.insert(0, self.music_file)
+
     def __get_add(self):
         self.current_playlist_name = self.name_entry.get()
         if self.search_entry.get() != '':
@@ -89,15 +103,20 @@ class CreatePlayList(Frame):
                 s_db.get_lib_info()
 
     def __get_create(self):
-        self.search_entry.delete(0, END)
-        my_array = np.array(self.current_playlist)
-        date = dt.date.today()
-        current_date = str(date.month) + "-" + str(date.day) + "-" + str(date.year)
-        playlist = pl.Playlist(my_array, self.current_playlist_name, current_date)
-        p_db.add_playlist(playlist)
+        if p_db.get_playlist_by_title(self.current_playlist_name) is None:
+            my_array = np.array(self.current_playlist)
+            date = dt.date.today()
+            current_date = str(date.month) + "-" + str(date.day) + "-" + str(date.year)
+            playlist = pl.Playlist(my_array, self.current_playlist_name, current_date)
+            p_db.add_playlist(playlist)
+            print(playlist.__str__())
+            self.name_entry.delete(0, END)
+        else:
+            self.name_entry.delete(0, END)
+            self.name_entry.insert(0, 'Playlist title already exists! Please choose a unique name.')
 
-        print(playlist.__str__())
-        self.name_entry.delete(0, END)
+        self.search_entry.delete(0, END)
+        self.find_song_path_entry.delete(0, END)
 
     def __get_clear(self):
         self.find_song_path_entry.delete(0, END)
