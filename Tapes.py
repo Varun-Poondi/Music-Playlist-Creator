@@ -7,7 +7,6 @@ class Tape:
         self.video_author = author
         self.video_name = name
 
-
     def change_name(self, name):
         self.video_name = name
         self.video_title = self.video_author + "-" + self.video_name
@@ -18,4 +17,3 @@ class Tape:
 
     def change_path(self, path):
         self.video_path = path
-
