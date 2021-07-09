@@ -14,9 +14,15 @@ class FirstPage(tk.Frame):
 
         # Travel Buttons
         buttonFont = font.Font(family='Helvetica', size=16)
-        library = Button(self, text='Your Library', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1, activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=100, pady=20, command=lambda: controller.show_frame(ForthPage))
-        playlists = Button(self, text='Your Playlists', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1, activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=96, pady=20, command=lambda: controller.show_frame(SecondPage))
-        create_playlists = Button(self, text='Create Playlists', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1, activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=89, pady=20, command=lambda: controller.show_frame(ThirdPage))
+        library = Button(self, text='Your Library', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                         activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=100, pady=20,
+                         command=lambda: controller.show_frame(ForthPage))
+        playlists = Button(self, text='Your Playlists', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                           activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=96, pady=20,
+                           command=lambda: controller.show_frame(SecondPage))
+        create_playlists = Button(self, text='Create Playlists', font=buttonFont, bg='#A3E4D7', fg='#5F4B8B',
+                                  borderless=1, activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D',
+                                  padx=89, pady=20, command=lambda: controller.show_frame(ThirdPage))
 
         library.place(y=-40, relx=0.5, rely=0.5, anchor=tk.CENTER)
         playlists.place(y=20, relx=0.5, rely=0.5, anchor=tk.CENTER)
@@ -41,12 +47,14 @@ class ThirdPage(tk.Frame):
         pt.create_home_button(self, controller, FirstPage)
         CP.CreatePlayList(self)
 
+
 class ForthPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.configure(bg='#EBDEF0')
         pt.create_home_button(self, controller, FirstPage)
         LB.LibraryFrame(self)
+
 
 class Application(tk.Tk):
     def __init__(self, *args, **kwargs):
