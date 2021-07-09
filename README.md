@@ -14,7 +14,8 @@
 * sqlite3
 ## Notice:
 * Developed for MacOS.
+* Requires Python 3
 ## Sample Images
-![](images/main_menu.png)
-![](images/playlist_creator.png)
-![](images/song_lib.png)
+![](git_images/main_menu.png)
+![](git_images/playlist_creator.png)
+![](git_images/song_lib.png)

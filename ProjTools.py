@@ -1,9 +1,8 @@
-import ctypes.wintypes
 import pathlib
 from tkinter import *
 from tkinter import font
-
 from tkmacosx import Button
+from PIL import Image
 
 
 def create_home_button(self, controller, frame):
@@ -50,3 +49,22 @@ def db_validator(result, row, col):
         result = result[row][col]
 
     return result
+
+
+def img_transparent(path):
+    img = Image.open(path)
+    img = img.convert("RGBA")
+    data = img.getdata()
+
+    newData = []
+    for item in data:
+        if item[0] == 255 and item[1] == 255 and item[2] == 255:
+            newData.append((255, 255, 255, 0))
+        else:
+            if item[0] > 150:
+                newData.append((0, 0, 0, 255))
+            else:
+                newData.append(item)
+
+    img.putdata(newData)
+    img.save(path, "PNG")
