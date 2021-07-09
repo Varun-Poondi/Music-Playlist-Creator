@@ -3,6 +3,7 @@ from tkinter import font
 from tkmacosx import Button
 import ProjTools as pt
 import PlaylistDB as p_db
+import PlaylistViewer as viewer
 
 
 class PlayListFrame(Frame):
@@ -26,7 +27,8 @@ class PlayListFrame(Frame):
         self.refresh_button.place(relx=0.99, rely=0.965, anchor=SE)
 
         self.select_button = Button(root, text='Select', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
-                                    activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5)
+                                    activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
+                                    command=self.__get_playlist_viewer)
         self.select_button.place(relx=0.99, rely=0.27, anchor=SE)
         return
 
@@ -39,3 +41,9 @@ class PlayListFrame(Frame):
 
     def __get_refresh(self):
         self.lib_scroll()
+
+    def __get_playlist_viewer(self):
+        title = str(self.my_list.get(self.my_list.curselection())).lstrip('0123456789.- ')
+        mp3_paths = p_db.get_paths_by_title(title)
+        text = p_db.get_info_by_title(title)
+        viewer.PlaylistViewer(mp3_paths, text, title)
