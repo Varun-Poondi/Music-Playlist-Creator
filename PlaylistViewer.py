@@ -47,6 +47,7 @@ class PlaylistViewer:
         self.info_button = Button(new_root, text=title, font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
                                   activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
                                   command=self.__get_info)
+
         self.play_button = CircleButton(new_root, image=self.base_image, borderwidth=0, bg='#A3E4D7', fg='#5F4B8B',
                                         borderless=1, activebackground=('#AE0E36', '#D32E5E'),
                                         activeforeground='#E69A8D', radius=20,
