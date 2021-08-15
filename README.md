@@ -17,7 +17,8 @@
 ###Prospective Features: Feel free to contribute 🙃
   * Dynamic Song movement
   * mp4 playlist compatibility 
-  * Create check to see if users are formating song titles correctly (Author-Song_Name)
+  * Create check to see if users are formatting song titles correctly (Author-Song_Name)
+  * Create song status bar to forward through song
 
 ## Main Python Libraries Used
 * tkinter
