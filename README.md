@@ -3,8 +3,7 @@
 ## General Info:
 * I want to develop a simple playlist creator with an easy to use mp4 and mp3 file manager. 
   Users are able to brows individual songs and playlists by checking their libraries. Users have the ability to delete from libraries or from local machines. 
-  Users are able to only create playlists if they are mp3 files however mp4 and mp3 can both be viewed in song library. This playlist creator is very easy to use and can
-  help users organize their audio files into one simple program. 
+  Users are able to only create playlists if they are mp3 files however mp4 and mp3 can both be viewed in song library. This playlist creator is very easy to use and canhelp users organize their audio files into one simple program.
 
 ## Features:
 * Expandable song and playlist library
@@ -15,9 +14,10 @@
 * Playlist summary feature for file management analysis
 * Simple playlist viewer interface with pause, next, and previous buttons
   
-###Prospective Features: Feel free to contribute 
+###Prospective Features: Feel free to contribute 🙃
   * Dynamic Song movement
   * mp4 playlist compatibility 
+  * Create check to see if users are formating song titles correctly (Author-Song_Name)
 
 ## Main Python Libraries Used
 * tkinter
