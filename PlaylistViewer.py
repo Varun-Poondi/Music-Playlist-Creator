@@ -3,6 +3,7 @@ import tkinter.font as font
 from tkmacosx import Button, CircleButton
 from PIL import ImageTk, Image
 import pygame
+import SongDB as s_db
 
 
 class PlaylistViewer:
@@ -14,6 +15,7 @@ class PlaylistViewer:
         self.new_root.maxsize(400, 550)
         self.new_root.minsize(400, 550)
         pygame.mixer.init()
+        pygame.init()
 
         # stuff
         u_font = font.Font(family='Helvetica', size=16)
@@ -32,6 +34,11 @@ class PlaylistViewer:
         label1.image = test
         label1.place(relx=0.5, rely=0.35, anchor=CENTER)
 
+        # Song title
+        self.header_info = StringVar()
+        self.header_info.set("Song Title")
+        self.header = Label(self.new_root, textvariable=self.header_info, font=u_font, bg='#EBDEF0', bd=3).place(
+            relx=0.5, rely=0.035, anchor=CENTER)
         # button images
         back_image = Image.open("proj_images/back.png")
         back_image = back_image.resize((400, 250))
@@ -45,7 +52,8 @@ class PlaylistViewer:
         state_image = state_image.resize((400, 200))
         self.base_image = ImageTk.PhotoImage(state_image)
 
-        self.info_button = Button(self.new_root, text=title, font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+        self.info_button = Button(self.new_root, text="Playlist Info", font=u_font, bg='#A3E4D7', fg='#5F4B8B',
+                                  borderless=1,
                                   activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
                                   command=self.__get_info)
 
@@ -57,7 +65,7 @@ class PlaylistViewer:
         self.front_button = CircleButton(self.new_root, image=front_image, borderwidth=0, bg='#A3E4D7', fg='#5F4B8B',
                                          borderless=1, radius=20)
 
-        self.info_button.place(relx=0.5, rely=0.035, anchor=CENTER)
+        self.info_button.place(relx=0.5, rely=0.95, anchor=CENTER)
         self.play_button.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.back_button.place(relx=0.15, rely=0.7, anchor=CENTER)
         self.front_button.place(relx=0.845, rely=0.7, anchor=CENTER)
@@ -66,6 +74,7 @@ class PlaylistViewer:
         self.front_button.config(command=self.__next)
         self.back_button.config(command=self.__previous)
 
+        self.SONG_END = pygame.USEREVENT + 1
         self.new_root.mainloop()
 
     def __get_info(self):
@@ -101,9 +110,11 @@ class PlaylistViewer:
         state_image = state_image.resize((425, 200))
         state_image = ImageTk.PhotoImage(state_image)
         self.play_button.configure(image=state_image)
+        self.header_info.set(s_db.get_title_by_path(song))
 
     def __next(self):
-        if self.song_index < len(self.songs)-1:
+        if self.song_index < len(self.songs) - 1:
+            pygame.mixer.music.stop()
             self.song_index += 1
             self.song_load = False
             self.base_state = False
@@ -113,6 +124,7 @@ class PlaylistViewer:
 
     def __previous(self):
         if self.song_index > 0:
+            pygame.mixer.music.stop()
             self.song_index -= 1
             self.song_load = False
             self.base_state = False

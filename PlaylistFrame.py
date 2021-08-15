@@ -30,7 +30,11 @@ class PlayListFrame(Frame):
                                     activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
                                     command=self.__get_playlist_viewer)
         self.select_button.place(relx=0.99, rely=0.27, anchor=SE)
-        return
+
+        self.delete_button = Button(root, text='Delete', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                                    activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
+                                    command=self.__delete)
+        self.delete_button.place(relx=0.99, rely=0.37, anchor=SE)
 
     def lib_scroll(self):
         self.my_list.delete(0, END)
@@ -47,3 +51,9 @@ class PlayListFrame(Frame):
         mp3_paths = p_db.get_paths_by_title(title)
         text = p_db.get_info_by_title(title)
         viewer.PlaylistViewer(mp3_paths, text, title)
+
+    def __delete(self):
+        title = str(self.my_list.get(self.my_list.curselection())).lstrip('0123456789.- ')
+        p_db.remove_playlist(title)
+        title = self.my_list.curselection()
+        self.my_list.delete(title)

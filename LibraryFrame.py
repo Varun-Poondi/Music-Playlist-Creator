@@ -32,7 +32,10 @@ class LibraryFrame(Frame):
                                     command=self.__get_selected)
         self.select_button.place(relx=0.99, rely=0.27, anchor=SE)
 
-
+        self.delete_button = Button(root, text='Delete', font=u_font, bg='#A3E4D7', fg='#5F4B8B', borderless=1,
+                                    activebackground=('#AE0E36', '#D32E5E'), activeforeground='#E69A8D', padx=5,
+                                    command=self.__delete)
+        self.delete_button.place(relx=0.99, rely=0.37, anchor=SE)
 
     def lib_scroll(self):
         self.my_list.delete(0, END)
@@ -49,12 +52,22 @@ class LibraryFrame(Frame):
         title = title.lstrip('0123456789.- ')
         path = s_db.get_path_by_title(title)
         if path is None:
-            print('Error, Path Error not found in Database')
+            print('Error, Path Tracer not found in Database')
         else:
             print("Now Playing .... " + title)
             opener = "open" if sys.platform == "darwin" else "xdg-open"
             subprocess.call([opener, path])
 
+    def __delete(self):
+        title = str(self.my_list.get(self.my_list.curselection()))
+        title = title.lstrip('0123456789.- ')
+        path = s_db.get_path_by_title(title)
+        if path is None:
+            print('Error, Path Tracer not found in Database')
+        else:
+            s_db.remove_tape(title)
+            title = self.my_list.curselection()
+            self.my_list.delete(title)
 
 
 

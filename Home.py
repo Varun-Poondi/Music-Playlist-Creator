@@ -77,7 +77,7 @@ class Application(tk.Tk):
     def show_frame(self, page):
         frame = self.frames[page]
         frame.tkraise()
-        self.title("Youtube-Playlist-Creator")
+        self.title("Music-Playlist-Creator")
 
 
 if __name__ == '__main__':

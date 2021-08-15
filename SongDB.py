@@ -36,6 +36,11 @@ def get_path_by_title(title):
     return pt.db_validator(c.fetchall(), 0, 0)
 
 
+def get_title_by_path(path):
+    c.execute("SELECT title FROM music WHERE path=?", (path,))
+    return pt.db_validator(c.fetchall(), 0, 0)
+
+
 def update_music_path(title, path):
     with conn:
         c.execute("""UPDATE music SET path = "path WHERE title = :title""", {'title': title, 'path': path})

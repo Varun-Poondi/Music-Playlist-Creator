@@ -1,21 +1,39 @@
 # Music-Playlist-Creator🎷🎸🎶🎵
-## A simple playlist creator 
-## Motivation:
-* I have been downloading mp4 videos from YouTube for a while, and I felt that it was annoying to go through my computer to select and organize them. I decided to create a mp4/mp3 playlist creator to help me organize my music. This project gives users the ability to easily organize their personal songs and videos and allow them to create simple playlists.
-## Features: 
-### Version: 1.0.0
+
+## General Info:
+* I want to develop a simple playlist creator with an easy to use mp4 and mp3 file manager. 
+  Users are able to brows individual songs and playlists by checking their libraries. Users have the ability to delete from libraries or from local machines. 
+  Users are able to only create playlists if they are mp3 files however mp4 and mp3 can both be viewed in song library. This playlist creator is very easy to use and can
+  help users organize their audio files into one simple program. 
+
+## Features:
 * Expandable song and playlist library
   * Able to add songs that are currently stored in library or found in local machine
-* Song and playlist search engines using sqlite3 database
-* Songs and playlists can be deleted from libraries and/or local machine
+
+* Expandable libraries for both songs and playlists with option to delete selected items from libraries and/or local machine
+* User-friendly playlist creator interface
+* Playlist summary feature for file management analysis
+* Simple playlist viewer interface with pause, next, and previous buttons
+  
+  ###Prospective Features: Feel free to contribute 
+  * Dynamic Song movement
+  * mp4 playlist compatibility 
+
 ## Main Python Libraries Used
 * tkinter
 * tkmacos
 * sqlite3
+* pygame
+
 ## Notice:
 * Developed for MacOS.
 * Requires Python 3
+
+
 ## Sample Images
-![](git_images/main_menu.png)
-![](git_images/playlist_creator.png)
+![](git_images/menu.png)
+![](git_images/pl_creator.png)
+![](git_images/playlist_lib.png)
 ![](git_images/song_lib.png)
+![](git_images/pl_viewer.png)
+

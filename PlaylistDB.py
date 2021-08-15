@@ -37,3 +37,8 @@ def get_paths_by_title(title):
     s = pt.db_validator(c.fetchall(), 0, 0)
     arr = np.array(s.split(','))
     return arr
+
+
+def remove_playlist(title):
+    with conn:
+        c.execute("DELETE from playlist WHERE title = :title", {'title': title})
