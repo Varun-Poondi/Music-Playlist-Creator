@@ -14,7 +14,7 @@
 * Playlist summary feature for file management analysis
 * Simple playlist viewer interface with pause, next, and previous buttons
   
-###Prospective Features: Feel free to contribute 🙃
+### Prospective Features:
   * Dynamic Song movement
   * mp4 playlist compatibility 
   * Create check to see if users are formatting song titles correctly (Author-Song_Name)
