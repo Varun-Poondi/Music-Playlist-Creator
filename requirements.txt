@@ -1,0 +1,13 @@
+appdirs==1.4.4
+certifi==2021.5.30
+colour==0.1.5
+distlib==0.3.2
+filelock==3.0.12
+numpy==1.22.1
+Pillow==9.0.0
+pipenv==2021.5.29
+pygame==2.1.2
+six==1.16.0
+tkmacosx==1.0.4
+virtualenv==20.4.7
+virtualenv-clone==0.5.4
